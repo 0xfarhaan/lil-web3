@@ -24,8 +24,8 @@ contract LilWalletTest is Test {
 
     function testNewWalletProxyDeployed() public {
         vm.prank(address(user));
-        walletFactory.deployWalletClone();
-        address newImpAdd = walletFactory.implementations(address(user),0);
-        assert(newImpAdd != address(0));
+        address newWalletAddrs = walletFactory.deployWalletClone();
+        address newImpAddrs = walletFactory.implementations(address(user),0);
+        assertEq(newWalletAddrs, newImpAddrs);
     }
 }

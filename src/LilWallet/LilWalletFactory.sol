@@ -15,8 +15,8 @@ contract LilWalletFactory {
         baseImplementation = _baseImplementation;
     }
 
-    function deployWalletClone() external {
-        address newImplementation = Clones.clone(baseImplementation);
+    function deployWalletClone() external returns(address newImplementation) {
+        newImplementation = Clones.clone(baseImplementation);
         implementations[msg.sender].push(newImplementation);
         LilWallet(newImplementation).initilise(msg.sender);
 
